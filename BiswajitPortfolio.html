@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biswajit Kumar — Senior Technical Consultant</title>
+  <meta name="description" content="Portfolio of Biswajit Kumar, Senior Technical Consultant (.NET, ASP.NET Core, MVC, Web API, SQL Server, EF, Dapper, Angular, React)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: #0f172a;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --brand: #7c3aed;
+      --brand-2:#22d3ee;
+      --ok:#22c55e;
+      --card:#0b1220;
+      --chip:#111827;
+      --border:#1f2937;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f8fafc;
+        --panel: #ffffff;
+        --muted: #475569;
+        --text: #0f172a;
+        --brand: #6d28d9;
+        --brand-2:#0891b2;
+        --card:#ffffff;
+        --chip:#f1f5f9;
+        --border:#e2e8f0;
+        --shadow: 0 10px 24px rgba(2,6,23,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1080px;margin:0 auto;padding:24px}
+    header.hero{position:relative;background:linear-gradient(135deg,var(--panel),rgba(124,58,237,.12));border:1px solid var(--border);box-shadow:var(--shadow);padding:28px 24px;border-radius:20px;overflow:hidden}
+    .ribbon{position:absolute;inset:auto -60px -60px auto;transform:rotate(-30deg);background:linear-gradient(90deg,var(--brand),var(--brand-2));width:300px;height:300px;filter:blur(40px);opacity:.25}
+    .toprow{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+    .avatar{width:84px;height:84px;border-radius:20px;display:grid;place-items:center;background:radial-gradient(120px 120px at 30% 20%, rgba(124,58,237,.35), transparent 60%), linear-gradient(180deg, var(--chip), var(--panel));border:1px solid var(--border);font-weight:800;font-size:28px;letter-spacing:.5px}
+    .title h1{margin:0;font-size:30px;line-height:1.15}
+    .subtitle{margin-top:6px;color:var(--muted);font-weight:500}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--border);font-size:13px}
+    .cta{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow);display:inline-flex;gap:10px;align-items:center}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:white;border-color:transparent}
+    .btn .icon{width:18px;height:18px}
+
+    /* Layout */
+    .grid{display:grid;gap:18px;margin-top:20px}
+    @media(min-width:920px){.grid{grid-template-columns:2fr 1fr}}
+    section.card{background:var(--panel);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:20px}
+    section.card h2{margin:0 0 12px 0;font-size:20px}
+    .muted{color:var(--muted)}
+    .list{display:flex;flex-direction:column;gap:16px}
+    .item{padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--card)}
+    .item h3{margin:0 0 6px 0;font-size:16px}
+    .meta{font-size:13px;color:var(--muted)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border:1px dashed var(--border);border-radius:10px;background:var(--chip);font-size:13px}
+
+    .projects{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:680px){.projects{grid-template-columns:repeat(2,1fr)}}
+    .project{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card);display:flex;flex-direction:column}
+    .project .cover{height:110px;background:linear-gradient(120deg,rgba(124,58,237,.18),rgba(34,211,238,.18));border-bottom:1px solid var(--border)}
+    .project .body{padding:14px}
+    .project h3{margin:0 0 6px 0;font-size:16px}
+    .project p{margin:0 0 8px 0;color:var(--muted);font-size:14px}
+    .project .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding:0 14px 14px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--border)}
+
+    .timeline{display:flex;flex-direction:column;gap:14px}
+    .timeline .row{display:grid;grid-template-columns:auto 1fr;gap:12px}
+    .timeline .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);margin-top:6px}
+
+    footer{margin:30px 0;color:var(--muted);text-align:center}
+
+    /* Print */
+    @media print{
+      header.hero, .btn, .ribbon{display:none!important}
+      body{background:white;color:black}
+      section.card{box-shadow:none;border-color:#ddd}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Biswajit Kumar",
+    "jobTitle": "Senior Technical Consultant",
+    "address": {"@type":"PostalAddress","addressLocality":"Kolkata","addressRegion":"West Bengal","addressCountry":"IN"},
+    "email": "mailto:biswajitk637@gmail.com",
+    "telephone": "+917979721476",
+    "url": "",
+    "sameAs": [
+      "https://github.com/biswajitk637",
+      "https://www.linkedin.com/in/biswajit-kumar-030a64152"
+    ],
+    "alumniOf": "Jharkhand Rai University",
+    "knowsAbout": [".NET","ASP.NET Core","MVC","Web API","SQL Server","Entity Framework","Dapper","NHibernate","Angular","React","VB.NET","Windows Forms","Bootstrap","jQuery","TypeScript","SharePoint"]
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="ribbon" aria-hidden="true"></div>
+      <div class="toprow">
+        <div class="avatar" aria-hidden="true">BK</div>
+        <div class="title">
+          <h1>Biswajit Kumar</h1>
+          <div class="subtitle">Senior Technical Consultant · .NET / ASP.NET Core · Web API · SQL Server</div>
+          <div class="chips" aria-label="Highlights">
+            <span class="chip">5.6+ years experience</span>
+            <span class="chip">Full‑stack .NET</span>
+            <span class="chip">Angular & React (1 yr each)</span>
+          </div>
+        </div>
+        <nav class="cta">
+          <a class="btn primary" href="#projects" aria-label="Jump to projects">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            View Projects
+          </a>
+          <a class="btn" href="mailto:biswajitk637@gmail.com">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+            Email
+          </a>
+          <a class="btn" href="tel:+917979721476">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.7 12.7 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.1 9.9a16 16 0 0 0 6 6l1.26-1.26a2 2 0 0 1 2.11-.45 12.7 12.7 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call
+          </a>
+          <a class="btn" href="https://github.com/biswajitk637" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12.3c0 5.2 3.4 9.6 8.1 11.2.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.2 2 3.1 1.4 3.8 1 .1-.9.5-1.4.9-1.7-2.7-.3-5.5-1.4-5.5-6.1 0-1.4.5-2.6 1.3-3.5-.1-.3-.6-1.7.1-3.5 0 0 1.1-.4 3.6 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.5-1.7 3.6-1.3 3.6-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2.1 1.3 3.5 0 4.7-2.8 5.8-5.5 6.1.5.4 1 .9 1 2v3c0 .3.2.7.8.6 4.7-1.6 8.1-6 8.1-11.2A11.5 11.5 0 0 0 12 .5Z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/biswajit-kumar-030a64152" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zM8 8h3.8v2.1h.1c.5-1 1.8-2.1 3.7-2.1 3.9 0 4.6 2.6 4.6 5.9V23h-4v-5.9c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V23H8V8z"/></svg>
+            LinkedIn
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="grid" role="main">
+      <section class="card" aria-labelledby="about">
+        <h2 id="about">About</h2>
+        <p class="muted">Dedicated and skilled .NET developer with hands-on experience in designing, building and deploying enterprise applications using Microsoft technologies. Strong with C#, ASP.NET (MVC & Core), RESTful Web API, SQL Server, EF, Dapper, ADO.NET, NHibernate; working experience with Angular and React; comfortable across frontend, backend and deployment cycles. Known for clear delivery, debugging depth and on-time releases.</p>
+        <div class="chips" aria-label="Core stack">
+          <span class="chip">C#</span>
+          <span class="chip">ASP.NET Core 8</span>
+          <span class="chip">ASP.NET MVC</span>
+          <span class="chip">REST API</span>
+          <span class="chip">SQL Server</span>
+          <span class="chip">Entity Framework</span>
+          <span class="chip">Dapper</span>
+          <span class="chip">NHibernate</span>
+          <span class="chip">Angular</span>
+          <span class="chip">React</span>
+          <span class="chip">jQuery</span>
+          <span class="chip">Bootstrap</span>
+          <span class="chip">Windows Forms</span>
+          <span class="chip">VB.NET</span>
+          <span class="chip">Git · Bitbucket</span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <div class="list">
+          <div class="item"><strong>Email:</strong> <a href="mailto:biswajitk637@gmail.com">biswajitk637@gmail.com</a></div>
+          <div class="item"><strong>Phone:</strong> <a href="tel:+917979721476">+91 79797 21476</a></div>
+          <div class="item"><strong>Location:</strong> Kolkata, West Bengal, India</div>
+          <div class="item"><strong>GitHub:</strong> <a href="https://github.com/biswajitk637" target="_blank" rel="noopener">github.com/biswajitk637</a></div>
+          <div class="item"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/biswajit-kumar-030a64152" target="_blank" rel="noopener">@biswajit-kumar-030a64152</a></div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="experience">
+        <h2 id="experience">Experience</h2>
+        <div class="timeline">
+          <div class="row">
+            <div class="dot" aria-hidden="true"></div>
+            <div class="item">
+              <h3>Senior Technical Consultant · Embee Software Pvt. Ltd.</h3>
+              <div class="meta">Dec 18, 2024 – Present · Kolkata, India</div>
+              <p class="muted">Leading .NET projects for HRMS and enterprise portals; module design, reviews, mentoring and deployments.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="dot" aria-hidden="true"></div>
+            <div class="item">
+              <h3>Software Engineer · Adapt Software India Pvt. Ltd.</h3>
+              <div class="meta">Jul 2024 – Dec 09, 2024 · Gurgaon, India</div>
+              <p class="muted">Worked on UDS (Universal Delivery Solutions) with ASP.NET Core MVC, Web API and SQL Server.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="dot" aria-hidden="true"></div>
+            <div class="item">
+              <h3>.NET Developer · Haier Industries Pvt. Ltd. (via Gi Group India)</h3>
+              <div class="meta">Dec 2022 – Jul 2024 · Greater Noida, India</div>
+              <p class="muted">Built portals like iService, ITIMS, HCMS, Work Permit, PMS, MyTimeOffice — end‑to‑end module development, schedulers, SQL Jobs, and production support.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="dot" aria-hidden="true"></div>
+            <div class="item">
+              <h3>.NET Developer · Saitec International Computer Consultants</h3>
+              <div class="meta">Apr 2022 – Sep 2022 · Noida, India</div>
+              <p class="muted">.NET MVC development and API integrations.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="dot" aria-hidden="true"></div>
+            <div class="item">
+              <h3>IT Trainer · NexgenSolution Technologies Pvt. Ltd.</h3>
+              <div class="meta">Jun 2019 – Dec 2021 · Ranchi, India</div>
+              <p class="muted">Delivered training on programming fundamentals and .NET stack.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="education">
+        <h2 id="education">Education & Training</h2>
+        <div class="list">
+          <div class="item">
+            <h3>B.Tech (CSE) · Jharkhand Rai University</h3>
+            <div class="meta">2019 · 75.5%</div>
+          </div>
+          <div class="item">
+            <h3>Tata Steel Ltd. (West Bokaro Division)</h3>
+            <div class="meta">DB Design Basics in Oracle · Jul 2018 – Aug 2018</div>
+          </div>
+          <div class="item">
+            <h3>Chetu · Dot Net Core Training</h3>
+            <div class="meta">Jan 2022 – Apr 2022</div>
+          </div>
+          <div class="item">
+            <h3>YCTC (Jhalda, Purulia)</h3>
+            <div class="meta">Certificate in IT Application (CITA) · Apr 2012 – Sep 2012</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="card" aria-labelledby="projects-title">
+        <h2 id="projects-title">Selected Projects</h2>
+        <div class="projects">
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>Consolidate Point of Sale</h3>
+              <p>Windows POS application handling in‑person/online sales with receipt generation and taxation.</p>
+              <a class="btn" href="#" aria-disabled="true">Private Repo</a>
+            </div>
+            <div class="tags">
+              <span class="tag">C#</span><span class="tag">Windows Forms</span><span class="tag">SQL Server</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>iService Portal</h3>
+              <p>Employee data, attendance, leave & approvals; multiple modules for Haier Appliances India.</p>
+              <a class="btn" href="https://portal.haierindia.com/iService/Login" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">ASP.NET MVC 4.5</span><span class="tag">jQuery</span><span class="tag">Bootstrap</span><span class="tag">SQL Server 2018</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>Assets Management System (ITIMS)</h3>
+              <p>End‑to‑end asset lifecycle, assignment tracking, warranties, and repair workflow.</p>
+              <a class="btn" href="https://portal.haierindia.com/ITIMS" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">ASP.NET MVC</span><span class="tag">NHibernate</span><span class="tag">jQuery</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>HCMS (Legal)</h3>
+              <p>Haier Contract Management System with multi‑stage approvals and document management.</p>
+              <a class="btn" href="https://inet.haierindia.com/hcms/login" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">ASP.NET MVC</span><span class="tag">SQL Server</span><span class="tag">jQuery</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>Work Permit</h3>
+              <p>4‑step approval workflow (Initiator → Supervisor → Area Owner → HSE) with reminders and auto‑closure.</p>
+              <a class="btn" href="https://portal.haierindia.com/WorkPermitAll/Login" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">ASP.NET MVC</span><span class="tag">Bootstrap</span><span class="tag">SQL Server</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>PMS (Project Management System)</h3>
+              <p>Timesheets and weekly reviews across HO, NIP and PIP plants; Core MVC + ADO.NET.</p>
+              <a class="btn" href="https://pms.haierindia.com/Project/ProjectExecution" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">ASP.NET Core MVC</span><span class="tag">ADO.NET</span><span class="tag">SQL Server</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>MyTimeOffice</h3>
+              <p>Attendance, leave, and employee management for off‑role staff.</p>
+              <a class="btn" href="https://mytimeoffice.haierindia.com/Login" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">ASP.NET MVC</span><span class="tag">jQuery</span><span class="tag">SQL Server</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>UDS — Universal Delivery Solutions</h3>
+              <p>Courier/label platform with ASP.NET Core MVC, Web API and Bootstrap.</p>
+              <a class="btn" href="https://udswwus.com/us/udslabel/Account/Login" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">ASP.NET Core</span><span class="tag">Web API</span><span class="tag">Bootstrap</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="cover" aria-hidden="true"></div>
+            <div class="body">
+              <h3>HRMS (Multiple Clients)</h3>
+              <p>Full‑suite HRMS with ESS portal, payroll, attendance, and analytics.</p>
+              <a class="btn" href="https://octanehrms.embee.co.in/ESSPortal/logIn.aspx" target="_blank" rel="noopener">Visit</a>
+            </div>
+            <div class="tags">
+              <span class="tag">VB.NET</span><span class="tag">Web API</span><span class="tag">SQL Server</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="skills">
+        <h2 id="skills">Technical Skills</h2>
+        <div class="skills">
+          <span class="skill">C#</span>
+          <span class="skill">VB.NET</span>
+          <span class="skill">ASP.NET MVC 4.6</span>
+          <span class="skill">ASP.NET Core 8</span>
+          <span class="skill">RESTful APIs</span>
+          <span class="skill">Entity Framework</span>
+          <span class="skill">Dapper</span>
+          <span class="skill">NHibernate</span>
+          <span class="skill">ADO.NET</span>
+          <span class="skill">LINQ</span>
+          <span class="skill">SQL Server 2018</span>
+          <span class="skill">Oracle</span>
+          <span class="skill">Windows Forms</span>
+          <span class="skill">Angular</span>
+          <span class="skill">React</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">jQuery</span>
+          <span class="skill">Bootstrap</span>
+          <span class="skill">SharePoint / SPFx</span>
+          <span class="skill">WCF</span>
+          <span class="skill">Git · Bitbucket · SourceTree</span>
+          <span class="skill">Visual Studio 2017/2019/2022</span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="personal">
+        <h2 id="personal">Personal</h2>
+        <div class="list">
+          <div class="item"><strong>DOB:</strong> 02 Apr 1995</div>
+          <div class="item"><strong>Languages:</strong> Bengali, Hindi, English</div>
+          <div class="item"><strong>Hobby:</strong> Carrom</div>
+          <div class="item"><strong>Address:</strong> Torang, Jhalda, Purulia, WB — 723212</div>
+          <div class="item"><strong>Blood Group:</strong> O+</div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Biswajit Kumar • Open to SDE/.NET opportunities & consulting.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
